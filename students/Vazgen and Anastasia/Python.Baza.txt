@@ -1,0 +1,48 @@
+#ФУНКЦИЯ КАПРИКАРА
+def K(i, k=4, r=10):
+    '''Эту функцию Капрекара написал Олег Григорьев'''
+    if (type(i) is int) & (i in range(r**k)) & \
+       (type(k) is int) & (k >= 2) & \
+       (type(r) is int) & (r >= 2):
+        d = []
+        for m in range (k):
+            i,q = divmod(i, r)
+            d.append(q)
+           
+        l_alpha = sorted(d,reverse=True)
+        l_omega = sorted(d)
+        
+        def N(l):
+            n = 0
+            for m in range (k):
+                n = n*r + l[m]
+            return n
+        
+        i_alpha = N(l_alpha)
+        i_omega = N(l_omega)
+        
+        return i_alpha - i_omega
+    else:
+        return None
+#ГЕНЕРАТОР
+def ImK (k, r) :
+    for i in range(r**k) :
+        yield K(i,k,r)
+
+n=-1
+ImK33=ImK(3,10)
+print(type(ImK33))
+for m in ImK33 :
+    n+=1
+    print(n,m)
+#СЛОВАРИ
+d={}
+n=-1
+ImK33=ImK(3,10)
+for m in ImK33 :
+    n+=1
+    if m in d.keys():
+        d[m].add(n)
+    else: 
+        d[m]={n}
+print(d)
