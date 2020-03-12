@@ -1,0 +1,1 @@
+Если непонятно, кури [MANUAL](https://requests.readthedocs.io/en/master/)
